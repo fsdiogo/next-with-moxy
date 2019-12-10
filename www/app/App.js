@@ -5,10 +5,13 @@ import KeyboardOnlyOutlines from '@moxy/react-keyboard-only-outlines';
 import { withNextIntlSetup } from '@moxy/next-intl';
 import nextIntlConfig from '../../intl';
 import registerGoogleTracking from './ga-tracking';
+import { setAppElement } from '@moxy/react-modal';
 import favicon from '../shared/media/favicons/favicon.ico';
 import SEO_DATA from './App.data.js';
 
 import '../shared/styles/index.css';
+
+setAppElement('#__next');
 
 class App extends NextApp {
     componentDidMount() {
