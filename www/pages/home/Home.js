@@ -6,7 +6,7 @@ import styles from './Home.css';
 
 const Home = () => (
     <div className={ styles.home }>
-        <FormattedMessage id="home.title" />
+        <h1><FormattedMessage id="home.title" /></h1>
 
         <Contacts />
     </div>

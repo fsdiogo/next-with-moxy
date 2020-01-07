@@ -1,11 +1,13 @@
 @import "./custom-medias";
 
+/* stylelint-disable max-line-length */
 /* ==========================================================================
    Colors
    ========================================================================== */
 
 :root {
     --color-white: #fff;
+    --color-black: #000;
 }
 
 /* ==========================================================================
@@ -17,7 +19,7 @@
     --font-family: var(--font-montserrat), sans-serif;
 
     --font-weight-regular: 400;
-    --font-weight-medium: 500;
+    --font-weight-bold: 700;
 }
 
 /* ==========================================================================
@@ -30,7 +32,7 @@
 }
 
 /* ==========================================================================
-   Transition / Animations timing
+   Transitions / Animations timings
    ========================================================================== */
 
 :root {
@@ -44,11 +46,11 @@
    ========================================================================== */
 
 :root {
-    /* App maximum width - if this is changed you need to update the custom media --layout-lte-container-width
+    /* App maximum width - if this is changed you'll need to update the custom media `--layout-lte-container-width`
     ============================================= */
     --layout-container-width: 140rem;
 
-    /* Spacing around main contents of the website - if this is changed you need to update the custom media --layout-lte-container-width
+    /* Spacing around the main content of the site - if this is changed you'll need to update the custom media `--layout-lte-container-width`
     ============================================= */
     --layout-edge-spacing-x: 5%;
 
