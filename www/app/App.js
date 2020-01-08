@@ -3,12 +3,17 @@ import NextApp from 'next/app';
 import Head from 'next/head';
 import KeyboardOnlyOutlines from '@moxy/react-keyboard-only-outlines';
 import { withNextIntlSetup } from '@moxy/next-intl';
+import { PageTransition } from 'next-page-transitions';
 import nextIntlConfig from '../../intl';
 import registerGoogleTracking from './ga-tracking';
 import favicon from '../shared/media/favicons/favicon.ico';
+// Data
 import SEO_DATA from './App.data.js';
-
+// Components
+import PageLoader from '../shared/components/page-loader';
+// Styles
 import '../shared/styles/index.css';
+import './App.css';
 
 export class App extends NextApp {
     componentDidMount() {
@@ -20,7 +25,7 @@ export class App extends NextApp {
     }
 
     render() {
-        const { Component, pageProps } = this.props;
+        const { Component, pageProps, router } = this.props;
 
         return (
             <>
@@ -46,7 +51,14 @@ export class App extends NextApp {
                     <meta property="twitter:image" content={ SEO_DATA.image.src } />
                 </Head>
                 <KeyboardOnlyOutlines>
-                    <Component { ...pageProps } />
+                    <PageTransition
+                        timeout={ 300 }
+                        classNames="page-transition"
+                        loadingTimeout={ 0 }
+                        loadingDelay={ 800 }
+                        loadingComponent={ <PageLoader /> }>
+                        <Component { ...pageProps } key={ router.route } />
+                    </PageTransition>
                 </KeyboardOnlyOutlines>
             </>
         );

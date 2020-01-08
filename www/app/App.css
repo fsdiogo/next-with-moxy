@@ -1,0 +1,18 @@
+
+:global .page-transition-enter {
+    opacity: 0;
+}
+
+:global .page-transition-enter-active {
+    opacity: 1;
+    transition: opacity 1600ms;
+}
+
+:global .page-transition-exit {
+    opacity: 1;
+}
+
+:global .page-transition-exit-active {
+    opacity: 0;
+    transition: opacity 1600ms;
+}

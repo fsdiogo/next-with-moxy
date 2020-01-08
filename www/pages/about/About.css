@@ -1,10 +1,10 @@
 @import "../../shared/styles/variables";
 
-.home {
+.about {
     width: var(--home-width);
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    background-color: var(--color-palevioletred);
-
+    background-color: var(--color-lightgreen);
 }

@@ -6,6 +6,9 @@
 
 :root {
     --color-white: #fff;
+    --color-palevioletred: palevioletred;
+    --color-lightgreen: lightgreen;
+    --color-cornflowerblue: cornflowerblue;
 }
 
 /* ==========================================================================
