@@ -6,13 +6,26 @@ import { withNextIntlSetup } from '@moxy/next-intl';
 import nextIntlConfig from '../../intl';
 import registerGoogleTracking from './ga-tracking';
 import favicon from '../shared/media/favicons/favicon.ico';
+import Highway from '@dogstudio/highway/src/highway';
+// Data
 import SEO_DATA from './App.data.js';
-
+// Components
+import { Slide, Fade } from '../shared/components/transitions';
+// Styles
 import '../shared/styles/index.css';
 
-export class App extends NextApp {
+class App extends NextApp {
+    Highway;
+
     componentDidMount() {
         this.unregisterGoogleTracking = registerGoogleTracking(this.props.router);
+
+        this.Highway = new Highway.Core({
+            transitions: {
+                '/about': Fade,
+                default: Slide,
+            },
+        });
     }
 
     componentWillUnmount() {
@@ -20,7 +33,7 @@ export class App extends NextApp {
     }
 
     render() {
-        const { Component, pageProps } = this.props;
+        const { Component, pageProps, router } = this.props;
 
         return (
             <>
@@ -46,7 +59,11 @@ export class App extends NextApp {
                     <meta property="twitter:image" content={ SEO_DATA.image.src } />
                 </Head>
                 <KeyboardOnlyOutlines>
-                    <Component { ...pageProps } />
+                    <div data-router-wrapper>
+                        <div data-router-view={ router.route }>
+                            <Component { ...pageProps } />
+                        </div>
+                    </div>
                 </KeyboardOnlyOutlines>
             </>
         );

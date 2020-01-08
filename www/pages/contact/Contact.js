@@ -2,14 +2,14 @@ import React from 'react';
 // Components
 import { Nav, Lorem } from '../../shared/components';
 // Styles
-import styles from './Home.css';
+import styles from './Contact.css';
 
-const Home = () => (
-    <div className={ styles.home }>
-        <h1>Home</h1>
+const Contact = () => (
+    <div className={ styles.contact }>
+        <h1>Contact</h1>
         <Nav />
         <Lorem />
     </div>
 );
 
-export default Home;
+export default Contact;
