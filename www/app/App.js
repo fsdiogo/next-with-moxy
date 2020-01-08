@@ -6,11 +6,16 @@ import { withNextIntlSetup } from '@moxy/next-intl';
 import nextIntlConfig from '../../intl';
 import registerGoogleTracking from './ga-tracking';
 import favicon from '../shared/media/favicons/favicon.ico';
+import { AnimatePresence } from 'framer-motion';
+// Components
+import { Transition } from '../shared/components';
+// Data
 import SEO_DATA from './App.data.js';
-
+// Styles
 import '../shared/styles/index.css';
+import './App.css';
 
-export class App extends NextApp {
+class App extends NextApp {
     componentDidMount() {
         this.unregisterGoogleTracking = registerGoogleTracking(this.props.router);
     }
@@ -20,7 +25,7 @@ export class App extends NextApp {
     }
 
     render() {
-        const { Component, pageProps } = this.props;
+        const { Component, pageProps, router } = this.props;
 
         return (
             <>
@@ -46,7 +51,11 @@ export class App extends NextApp {
                     <meta property="twitter:image" content={ SEO_DATA.image.src } />
                 </Head>
                 <KeyboardOnlyOutlines>
-                    <Component { ...pageProps } />
+                    <AnimatePresence exitBeforeEnter>
+                        <Transition key={ router.route }>
+                            <Component { ...pageProps } />
+                        </Transition>
+                    </AnimatePresence>
                 </KeyboardOnlyOutlines>
             </>
         );
